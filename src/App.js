@@ -1,9 +1,11 @@
 import React from 'react';
-import { ListaPokemones } from './components/ListaPokemones'
+//import { ListaPokemones } from './components/ListaPokemones'
+import { Hooks } from './components/Hooks';
 function App() {
   return (
     <>
-      <ListaPokemones/>
+      {/* <ListaPokemones/> */}
+      <Hooks/>
     </>
   );
 }
