@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
-export const DetallePokemon = () => {
+export const DetallePokemon = ({ id }) => {
+  const [pokemon, setPokemon] = useState({});
+
+  const BASE_URL = `https://pokeapi.co/api/v2/pokemon/${id}`;
+
+  useEffect(() => {
+    fetch(BASE_URL)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setPokemon(data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
   return (
     <div className="card mt-5">
       <div className="row no-gutters text-dark">
@@ -22,11 +36,13 @@ export const DetallePokemon = () => {
           }}
         >
           <div className="card-body">
-            <h5 className="card-title">Nombre</h5>
-            <p className="card-text">Types</p>
+            <h5 className="card-title">{pokemon.name}</h5>
+            <p className="card-text">
+              {/* {pokemon.types.map((type) => type.name)} */}
+            </p>
             <p className="card-text">Forms</p>
             <p className="card-text">
-              <small className="text-muted">Peso pokemon</small>
+              <small className="text-muted">{pokemon.height}</small>
             </p>
             <Link className="btn btn-primary" to="/">
               Inicio
