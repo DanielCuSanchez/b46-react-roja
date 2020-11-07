@@ -15,6 +15,10 @@ export const Pokemon = (props) => {
   //console.log(props);
   const { id, sprites } = !!pokemon && pokemon;
 
+  // Operador ternario ?
+
+  // sprites ={ propiedad1: "", propiedad2: "" }
+
   const { front_default } = !!sprites && sprites;
 
   return (

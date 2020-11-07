@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+const setToken = (token) => {
+  //Actualizar el estado GLOBAL de la APP
+};
+
 export const Hooks = () => {
   const [formState, setFormState] = useState({
     usuario: "",
@@ -19,7 +23,13 @@ export const Hooks = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formState, "LISTO PARA ENVIAR AL BACKEND ");
+    // const URL_BACKEND = "";
+    // fetch(URL_BACKEND, { method: "POST", formState })
+    //   .then((token) => {
+    //     setToken(token);
+    //   })
+    //   .catch((e) => console.log(e));
+    //console.log(formState, "LISTO PARA ENVIAR AL BACKEND ");
   };
 
   return (

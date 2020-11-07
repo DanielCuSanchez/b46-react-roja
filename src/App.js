@@ -1,4 +1,5 @@
 import React from "react";
+import { Repaso } from "./components/Repaso";
 import { Home } from "./views/Home";
 import { VistaPokemonDetalle } from "./views/VistaPokemonDetalle";
 import { Contacto } from "./views/Contacto";
@@ -11,14 +12,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Router>
+      {/* <Router>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/pokemon/:id" component={VistaPokemonDetalle} />
           <Route exact path="/contacto" component={Contacto} />
         </Switch>
-      </Router>
+      </Router> */}
       {/* <Contador /> */}
+      <Repaso />
     </>
   );
 }

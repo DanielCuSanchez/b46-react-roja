@@ -50,7 +50,10 @@ const Pokemon = (pokemon) => {
         <p>
           Habilidades:
           {abilities.map((ability) => (
-            <small> {ability.name} </small>
+            <div>
+              <small> {ability.ability.name} </small>
+              <br />
+            </div>
           ))}
         </p>
         <p>
