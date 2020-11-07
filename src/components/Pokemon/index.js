@@ -11,7 +11,7 @@ export const Pokemon = (props) => {
         setPokemon(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [url]);
   //console.log(props);
   const { id, sprites } = !!pokemon && pokemon;
 

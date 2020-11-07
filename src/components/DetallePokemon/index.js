@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export const DetallePokemon = ({ id }) => {
   const [pokemon, setPokemon] = useState({});
+  const [cargando, setCargando] = useState(true);
 
   const BASE_URL = `https://pokeapi.co/api/v2/pokemon/${id}`;
 
@@ -11,49 +12,60 @@ export const DetallePokemon = ({ id }) => {
     fetch(BASE_URL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setPokemon(data);
+        setTimeout(() => {
+          setCargando(false);
+        }, 500);
       })
       .catch((e) => console.log(e));
   }, []);
-  const { sprites } = !!pokemon && pokemon;
-  if (sprites) {
-    var keys = Object.keys(sprites);
-    console.log(keys);
-  }
+
   return (
-    <div className="card mt-5">
-      <div className="row no-gutters text-dark">
-        <div className="col-4">
-          <img
-            src={""}
-            className="card-img"
-            style={{
-              minWidth: "300px",
-            }}
-          />
-        </div>
-        <div
-          className="col-8"
-          style={{
-            minWidth: "600px",
-          }}
-        >
-          <div className="card-body">
-            <h5 className="card-title">{pokemon.name}</h5>
-            <p className="card-text">
-              {/* {pokemon.types.map((type) => type.name)} */}
-            </p>
-            <p className="card-text">Forms</p>
-            <p className="card-text">
-              <small className="text-muted">{pokemon.height}</small>
-            </p>
-            <Link className="btn btn-primary" to="/">
-              Inicio
-            </Link>
-          </div>
-        </div>
+    <div className="container bg-light text-dark my-5">
+      <div className="row justify-content-center text-center py-3">
+        {cargando ? (
+          <p className="alert alert-danger">Cargando.....</p>
+        ) : (
+          <Pokemon {...pokemon} />
+        )}
       </div>
     </div>
+  );
+};
+
+const Pokemon = (pokemon) => {
+  const { abilities, forms, name, height, sprites } = pokemon;
+  return (
+    <>
+      <div className="col-md-4">
+        <img
+          src={sprites.front_default}
+          style={{ width: "250px" }}
+          alt={name}
+        />
+      </div>
+      <div className="col-md-6">
+        <h5>{name}</h5>
+        <p>
+          Habilidades:
+          {abilities.map((ability) => (
+            <small> {ability.name} </small>
+          ))}
+        </p>
+        <p>
+          Formas :{" "}
+          {forms.map((form) => (
+            <small> {form.name} </small>
+          ))}
+        </p>
+        <p>
+          <small className="text-muted">Altura: {height} cm</small>
+        </p>
+        <Link className="btn btn-primary" to="/">
+          Inicio
+        </Link>
+      </div>
+    </>
   );
 };

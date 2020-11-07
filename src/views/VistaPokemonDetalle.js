@@ -11,9 +11,7 @@ export const VistaPokemonDetalle = (props) => {
       <div className="row text-center justify-content-center">
         <h2>Detalle de Pokemon</h2>
       </div>
-      <div className="row justify-content-center">
-        <DetallePokemon id={id} />
-      </div>
+      <DetallePokemon id={id} />
     </div>
   );
 };
