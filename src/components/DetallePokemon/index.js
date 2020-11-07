@@ -16,13 +16,17 @@ export const DetallePokemon = ({ id }) => {
       })
       .catch((e) => console.log(e));
   }, []);
-
+  const { sprites } = !!pokemon && pokemon;
+  if (sprites) {
+    var keys = Object.keys(sprites);
+    console.log(keys);
+  }
   return (
     <div className="card mt-5">
       <div className="row no-gutters text-dark">
         <div className="col-4">
           <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+            src={""}
             className="card-img"
             style={{
               minWidth: "300px",
