@@ -1,10 +1,11 @@
 import React from "react";
-import { Repaso } from "./components/Repaso";
-import { Home } from "./views/Home";
-import { VistaPokemonDetalle } from "./views/VistaPokemonDetalle";
-import { Contacto } from "./views/Contacto";
+import { Axios } from "./axios";
+// import { Repaso } from "./components/Repaso";
+// import { Home } from "./views/Home";
+// import { VistaPokemonDetalle } from "./views/VistaPokemonDetalle";
+// import { Contacto } from "./views/Contacto";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //import { Hooks } from './components/Hooks';
 
@@ -20,7 +21,8 @@ function App() {
         </Switch>
       </Router> */}
       {/* <Contador /> */}
-      <Repaso />
+      {/* <Repaso /> */}
+      <Axios />
     </>
   );
 }
