@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export const Axios = () => {
@@ -11,6 +11,18 @@ export const Axios = () => {
     age: "",
   };
   const [formState, setFormState] = useState({ ...estadoInicial });
+  const [envioDeFormulario, setEnvioDeFormulario] = useState(false);
+  const [autores, setAutores] = useState({});
+
+  useEffect(() => {
+    axios
+      .get("https://goodreads-devf-aaron.herokuapp.com/api/v1/authors/")
+      .then((resp) => {
+        console.log(resp.data);
+        setAutores(resp.data);
+      })
+      .catch((e) => console.log(e));
+  }, [envioDeFormulario]);
 
   //Estado actual
   console.log("😀", formState);
@@ -35,6 +47,7 @@ export const Axios = () => {
       .then((resp) => {
         console.log(resp.data);
         setFormState({ ...estadoInicial });
+        setEnvioDeFormulario(true);
         //console.log(formState);
       })
       .catch((err) => console.log(err));
@@ -98,6 +111,12 @@ export const Axios = () => {
           Enviar post
         </button>
       </form>
+      {envioDeFormulario && (
+        <div>
+          <p className="alert alert-success"> Se envio la informacion </p>
+          {JSON.stringify(autores)}
+        </div>
+      )}
     </div>
   );
 };
